@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoPixel Styled Website</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #ddd;
+            background: url('https://media.discordapp.net/attachments/1178674653766635540/1275886364239593472/d5aba088f4dd5e3c876f450e0a38880b.jpg?ex=66c78546&is=66c633c6&hm=f02ab8534e183d0c5194a63fa01e2c549ab35bf0ce4792c44e0544d1c4a7b7b4&=&format=webp&width=419&height=235') no-repeat center center fixed;
+            background-size: cover;
+            line-height: 1.6;
+            overflow: hidden; /* Hide scrollbars during loading */
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .loading-animation {
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            background: url('https://your-image-url.com/dancing-animal.gif') no-repeat center center; /* Replace with your GIF URL */
+            background-size: contain; /* Ensure the GIF fits within the container */
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: rgba(34, 34, 34, 0.8); /* Semi-transparent background */
+            border-bottom: 2px solid #444;
+            position: relative;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            background-color: #0066cc; /* Blue color */
+            border-radius: 50%;
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1001; /* Ensure it appears above the navbar */
+        }
+
+        .menu-toggle .menu-bar {
+            background: #fff;
+            height: 4px;
+            width: 25px;
+            margin: 3px 0;
+            border-radius: 2px;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 0; /* Remove gaps between items */
+            background: #333;
+            position: absolute;
+            top: 60px; /* Adjust based on header height */
+            right: 20px;
+            width: 200px;
+            display: none; /* Hide the navbar initially */
+            border-radius: 5px;
+            z-index: 1000; /* Ensure it appears above other content */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+        }
+
+        .navbar a {
+            color: #ddd;
+            text-decoration: none;
+            padding: 10px;
+            border-bottom: 2px solid #0066cc; /* Blue border for each menu item */
+            display: block; /* Make links take the full width */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .navbar a:last-child {
+            border-bottom: none;
+        }
+
+        .navbar a:hover {
+            background-color: #444;
+            color: #fff;
+            border-color: #0055aa; /* Darker blue on hover */
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: #ddd;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Main Content Sections */
+        main {
+            padding: 50px;
+        }
+
+        .content-section {
+            padding: 50px;
+            background: rgba(51, 51, 51, 0.8); /* Slightly transparent background */
+            color: #ddd;
+            border-bottom: 1px solid #444;
+            margin-bottom: 20px;
+        }
+
+        .content-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(34, 34, 34, 0.8);
+            color: #ddd;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #444;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-animation"></div>
+    </div>
+
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="logo">
+            <a href="#"><img src="https://media.discordapp.net/attachments/1269562436265185300/1274772860615000235/kampung_baru.png?ex=66c76cbe&is=66c61b3e&hm=1d2f4b480f86941b9c1a753905b3caaa11bb18afe3e98b9d417b6aaacdee598f&=&format=webp&quality=lossless&width=479&height=479" alt="Logo"></a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="menu-bar"></div>
+            <div class="menu-bar"></div>
+            <div class="menu-bar"></div>
+        </div>
+        <nav class="navbar">
+            <a href="#home">Keterangan</a>
+            <a href="https://discord.gg/h7X5XPuJmj">Discord</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Welcome To kampung Baru Raya</h1>
+            <p>Tunjukan Tekat Cerita Roleplay Mu Disini.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section id="home" class="content-section">
+            <h2>Apa Itu Roleplay</h2>
+            <p>Roleplay adalah permainan yang dilakukan secara virtual dengan menirukan idola dalam segi sikap, cara bicara, hingga detail aktivitas keseharian. Pemain roleplay harus bisa berperan secara virtual melalui teks atau video tanpa mengungkap jati diri mereka yang sebenarnya. Permainan ini sebenarnya tidak berbeda dengan bermain peran ketika kecil. Bedanya, anak remaja kini memainkan roleplay atau RP lewat aplikasi di dalam gawai mereka..</p>
+        </section>
+        <section id="about" class="content-section">
+            <h2>Apa Itu Mixing</h2>
+            <p>OOC: Singkatan dari Out of Character, jika diterjemahkan artinya “Diluar Karakter”. Suatu konteks yang berada diluar karakter permainan.
+                Contoh 1: Jika Anda sedang di dalam permainan, terus Anda membahas berita dunia nyata, dalam konteks tersebut bisa disebut pembahasan OOC, atau malah termasuk “Mixing”.
+                IC: Singkatan dari In Character, jika diterjemahkan artinya “Dalam Karakter”. Segala sesuatu yang berhubungan dengan karakter di in-game.
+                Contoh: Misal nama di in-game Steve, ya Anda harus memperkenalkan nama, pekerjaan, riwayat tentang Steve. Jadi jangan membahas nama asli  Anda ke dalam permainan, hal tersebut termasuk pembahasan OOC..</p>
+        </section>
+        <section id="services" class="content-section">
+            <h2>Apa Itu Donasi</h2>
+            <p>Donasi merupakan salah satu bentuk aksi sosial yang dilakukan oleh individu, kelompok, atau organisasi untuk memberikan bantuan kepada mereka yang membutuhkan. Melalui donasi, Anda bisa membantu kehidupan orang-orang yang kurang beruntung. Memahami jenis-jenis donasi dan cara menyalurkannya, dapat memperlancar niat baik Anda.</p>
+        </section>
+        <section id="contact" class="content-section">
+            <h2>Lets Go Join</h2>
+            <p>Kampung Baru Raya Roleplay Indonesia Open Whitelist Badsite</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Kampung Baru Styled Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.navbar');
+            // Toggle visibility of the menu
+            nav.style.display = (nav.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Hide the loading screen after the content is loaded
+        window.addEventListener('load', () => {
+            const loadingScreen = document.querySelector('.loading-screen');
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide the loading screen after transition
+            document.body.style.overflow = 'auto'; // Show scrollbars again
+        });
+    </script>
+</body>
+</html>
